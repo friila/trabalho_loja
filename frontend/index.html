@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <main>
+        <div class="container py-4">
+            <header class="pb-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94"
+                        role="img">
+                        <title>Bootstrap</title>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                            fill="currentColor"></path>
+                    </svg>
+                    <span class="fs-4">Loja Exemplo</span>
+                </a>
+            </header>
+
+            <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">Loja de Informática - Estoque</h1>
+                    <p class="col-md-8 fs-4"></p>
+                    <button class="btn btn-primary btn-lg" type="button" id="btnNovoProduto">Cadastrar novo
+                        produto</button>
+                </div>
+            </div>
+
+            <div class="p-5 mb-5 rounded-3" id="divCadastroProdutos" style="display: none;">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Cadastro de produto</legend>
+                        <input type="hidden" id="produtoId" name="produtoId">
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Nome">Nome</label>
+                            <div class="col-md-3">
+                                <input id="nome" name="nome" type="text" placeholder="Nome do produto"
+                                    class="form-control input-md" required="Informe o nome do produto">
+
+                            </div>
+                        </div>
+
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">Marca</label>
+                            <div class="col-md-3">
+                                <input id="marca" name="marca" type="text" placeholder="Marca"
+                                    class="form-control input-md" required="Informe a marca">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">Quantidade</label>
+                            <div class="col-md-2">
+                                <input id="quantidade" name="quantidade" type="number"
+                                    placeholder="Quantidade do produto" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="btnSalvar"></label>
+                            <div class="col-md-4">
+                                <button id="btnCancelar" name="btnCancelar" class="btn btn-danger">Canccelar</button>
+                                <button id="btnSalvar" type="button" name="btnSalvar"
+                                    class="btn btn-success">Salvar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+
+            <div class="p-5 mb-4 rounded-3" id="divListaprodutos">
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="Nome">Pesquisar produto:</label>
+                            <div class="col-md-11">
+                                <input id="nomePesquisaProduto" name="nomePesquisaProduto" type="text"
+                                    placeholder="Informe o nome do produto" class="form-control input-md">
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <label class="control-label" for="Nome">&nbsp;</label><br>
+                        <button id="btnPesquisar" type="button" name="btnPesquisar"
+                            class="btn btn-success">Pesquisar</button>
+                    </div>
+                </div>
+                <table class="table table-striped  ">
+                    <thead class="thead-dark">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            Marca
+                        </th>
+                        <th>
+                            Quantidade
+                        </th>
+                        <th>
+                            Opção
+                        </th>
+                    </thead>
+                    <tbody id="tbodyProdutos">
+
+                    </tbody>
+                </table>
+            </div>
+
+
+            <footer class="pt-3 mt-4 text-muted border-top">
+                &copy; 2021
+            </footer>
+        </div>
+    </main>
+
+
+    <script>
+        $(document).ready(function () {
+            var urlApi = 'http://localhost:3000/produtos';
+
+            $('#btnSalvar').on('click', salvarProduto);
+            $('#btnNovoProduto').on('click', function () {
+                controleDivCadastro(true);
+                controleDivListaProdutos(false);
+            })
+            $('#btnCancelar').on('click', function () {
+                controleDivCadastro(false);
+                controleDivListaProdutos(true);
+            })
+
+            $('#btnPesquisar').on('click', function () {
+                var termoBusca = $('#nomePesquisaProduto').val();
+                if (termoBusca == "") {
+                    alert('Informe um nome de produto para pesquisar');
+                    carregarProdutos();
+                    return;
+                }
+                
+                $.get(urlApi + "/pesquisar/" + termoBusca, function (produtos) {
+                    popularProdutos(produtos);
+                    controleDivListaProdutos(true);
+                    
+                });
+            })
+
+            function controleDivCadastro(visivel) {
+                var $divCadastroProdutos = $('#divCadastroProdutos');
+                if (visivel)
+                    $divCadastroProdutos.fadeIn('normal');
+                else
+                    $divCadastroProdutos.hide();
+
+            }
+
+            function controleDivListaProdutos(visivel) {
+                var $divCadastroProdutos = $('#divListaprodutos');
+                if (visivel)
+                    $divCadastroProdutos.fadeIn('normal');
+                else
+                    $divCadastroProdutos.hide();
+
+            }
+
+
+
+            function salvarProduto() {
+                var atualizarProduto = false;
+                var nome = $('#nome').val();
+                var marca = $('#marca').val();
+                var quantidade = $('#quantidade').val();
+                var produtoId = $('#produtoId').val();
+
+                if(nome == "")
+                {
+                    alert('Informe o nome');
+                    return;
+                }
+
+                if(marca == "")
+                {
+                    alert('Informe a marca');
+                    return;
+                }
+
+                if(quantidade == 0)
+                {
+                    alert('Informe a quantidade');
+                    return;
+                }
+
+                var produto = {
+                    nome: nome,
+                    marca: marca,
+                    quantidade: quantidade
+                }
+
+                if (produtoId != "") {
+                    produto._id = produtoId;
+                    atualizarProduto = true;
+                }
+
+
+                if (atualizarProduto == false) {
+
+                    $.post(urlApi, produto, function (result) {
+                        if (result.sucesso) {
+
+                            alert('Produto cadastrado com sucesso!');
+                            carregarProdutos();
+                            controleDivCadastro(false);
+                            controleDivListaProdutos(true);
+                        } else {
+                            alert('Não foi possível salvar o produto')
+                        }
+                    });
+                } else {
+
+                    $.ajax({
+                        url: urlApi + '/' + produtoId,
+                        type: 'PUT',
+                        data: produto,
+                        success: function (result) {
+                            console.log(result)
+                            if (result.sucesso) {
+                                alert('Produto atualizado com sucesso!');
+                                carregarProdutos();
+                                controleDivCadastro(false);
+                                controleDivListaProdutos(true);
+                            } else {
+                                alert('Não foi possível atualizar o produto')
+                            }
+                        },
+                        error: function () {
+                            alert('erro ao delete')
+                        }
+                    });
+
+                }
+
+
+            }
+
+            function popularDadosProduto(produto) {
+                $('#nome').val(produto.nome);
+                $('#marca').val(produto.marca);
+                $('#quantidade').val(produto.quantidade);
+                $('#produtoId').val(produto._id);
+            }
+
+            function carregarEventosBotoes() {
+                $('.btnEditarProduto').off('click');
+                $('.btnRemoverProduto').off('click');
+
+                $('.btnEditarProduto').on('click', function (e) {
+                    e.preventDefault();
+                    var id = $(this).data("id");
+                    $.get(urlApi + "/" + id, function (produto) {
+                        popularDadosProduto(produto);
+                        controleDivListaProdutos(false);
+                        controleDivCadastro(true);
+                    });
+                })
+
+                $('.btnRemoverProduto').on('click', function (e) {
+                    e.preventDefault();
+
+                    var id = $(this).data("id");
+                    var nomeProduto = $(this).data("nome");
+
+                    var confirmarDelete = confirm('Deseja realmente remover o produto ' + nomeProduto);
+                    if (confirmarDelete == false)
+                        return;
+
+                    $.ajax({
+                        url: urlApi + '/' + id,
+                        type: 'DELETE',
+                        success: function (result) {
+                            carregarProdutos();
+                            controleDivCadastro(false);
+                            controleDivListaProdutos(true);
+                        },
+                        error: function () {
+                            alert('erro ao delete')
+                        }
+                    });
+                })
+            }
+
+
+            //carregar produtos
+            function popularProdutos(produtos) {
+                var $tbodyProdutos = $('#tbodyProdutos');
+                var trProdutos = '';
+                $.each(produtos, function (index, produto) {
+                    trProdutos += "<tr>";
+                    trProdutos += "<td>" + produto._id.substring(0, 6) + "</td>";
+                    trProdutos += "<td>" + produto.nome + "</td>";
+                    trProdutos += "<td>" + produto.marca + "</td>";
+                    trProdutos += "<td>" + produto.quantidade + "</td>";
+                    trProdutos += "<td><a href='#' class='btnEditarProduto' data-id='" + produto._id + "'>Editar<a> | ";
+                    trProdutos += "<a href='#' class='btnRemoverProduto' data-nome='" + produto.nome + "' data-id='" + produto._id + "' >Remover<a></td>";
+                    trProdutos += "</tr>";
+                })
+
+
+                $tbodyProdutos.empty().append(trProdutos).hide().show();
+
+                carregarEventosBotoes();
+            }
+
+
+            function carregarProdutos() {
+                $.get(urlApi, popularProdutos);
+            }
+
+
+            carregarProdutos();
+        })
+    </script>
+</body>
+
+</html>
